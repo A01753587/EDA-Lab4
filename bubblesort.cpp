@@ -19,41 +19,46 @@ se iguala el elemento en el siguiente elemento
 
 
 #include <iostream>
+#include <vector>
 
-void bubblesort(int arr[], int n){
+
+void bubblesort(std::vector<int> &vect){
+    int n = vect.size();
     for (int i = 0; i < n-1; i++){
         for(int j = 0; j < n -i -1 ; j++){
-            if(arr[j] > arr[j+1]){
-                int value = arr[j];
-                arr[j] = arr[j+1];
-                arr[j+1] = value;
-                std::cout<<"operacion sort numero "<< j <<" del loop j \n";
-                std::cout<<"\n";
+            if(vect[j] > vect[j+1]){
+                std::swap(vect[j],vect[j+1]);
             }
-            std::cout<<"Pasa al siguiente elemento:  "<< j <<" del loop j \n";
-            std::cout<<"\n";
-            std::cout<<"\n";
         }
-        std::cout<<"operacion "<< i <<" del loop i \n";
-        std::cout<<"\n";
-        std::cout<<"\n";
-        std::cout<<"\n";
-
     }
 }
 
-void printarray(int arr[], int n){
-    for(int i = 0; i < n; i++){
-        std::cout<<arr[i]<<"\n";
+std::ostream& operator<<(std::ostream& out,const std::vector<int>& vect){
+    out<<"[";
+    bool first_time {true};
+    for(int n: vect){
+        if(first_time){
+            out<<n;
+            first_time=false;
+        }else{
+            out<<","<<n;
+        }   
     }
+    out<<"]";
+    return out;
 }
+
+// void printvector(int arr[], int n){
+//     for(int i = 0; i < n; i++){
+//         std::cout<<arr[i]<<"\n";
+//     }
+// }
 
 int main(){
-   int data[] = {10,5,44,7,89,6,5,3,2,1};
-   int n = sizeof(data)/sizeof(data[0]); 
-   std::cout<<"Elementos del arreglo desordenados: \n";
-   printarray(data, n);
-   std::cout<<"Elementos del arreglo ordenados: \n";
-   bubblesort(data, n);
-   printarray(data, n);
+    std::vector<int> data {10,5,44,7,89,6,5,3,2,1};
+    std::cout<<"Elementos del arreglo desordenados: \n";
+    std::cout<<data<<"\n";
+    std::cout<<"Elementos del arreglo ordenados: \n";
+    bubblesort(data);
+    std::cout<<data<<"\n";
 }
