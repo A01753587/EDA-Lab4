@@ -41,19 +41,8 @@ void print_vector(const std::vector<T>& vec){
     std::cout<<"\n";
 }
 
-//Complexity O(n«2)
-void selection_sort(std::vector<int>& vec){
-    for (int i=0; i<vec.size()-1; i++){ 
-        //find smallest value in vector "vec" starting at i
-        int min_index = i; 
-        for (int j= i+1; j<vec.size(); j++){
-            if (vec.at(j)<vec.at(min_index)){
-                min_index = j;
-            } 
-        }
-        std::swap(vec.at(i), vec.at(min_index));
-    }
-}
+//Complexity O(n^2)
+
 
 void fill_random(std::vector<int>& values, int max_value)
 {

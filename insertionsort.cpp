@@ -23,31 +23,35 @@ Va retricendiendo
 
 #include <iostream>
 
-void insertionsort(int arr[], int n){
+void insertionsort(std::vector<int> &vect){
+    int n=vect.size();
     for(int i = 1; i < n; i++){//primer ciclo que recorre todos los elementos del arreglo
-        int value = arr[i];//valores dentro del arreglo en la funcion
+        int value = vect[i];//valores dentro del arreglo en la funcion
         int j = i - 1;// se crea la variable j que es igual al indice el el que se esta menos uno, ej: i=1, j = 1-1, i=2, j = 2-1
-        while (j >= 0 && arr[j] > value){// se entra al segundo bucle del arreglo que consta de los elementos que se encuentran a la izquierda del elemento en el que se esta trabjando 
-            arr[j+1] = arr[j];// el valor en la posicion 1 de j es el elemento en 1
+        while (j >= 0 && vect[j] > value){// se entra al segundo bucle del arreglo que consta de los elementos que se encuentran a la izquierda del elemento en el que se esta trabjando 
+            std::swap(vect[j],vect[j+1]);//el valor en la posicion 1 de j es el elemento en 1
             j = j - 1;
         }
-        arr[j+1] = value;
     } 
 }
 
-void printarray(int n, int arr[]){
+void printarray(std::vector<int> &vect){
+    int n=vect.size();
     for(int i = 0; i < n ; i++ ){
-        std::cout<<""<<arr[i]<<"\n";
+        std::cout<<""<<vect[i]<<"\n";
     }
 }
 
 int main(){
-    int arr[] = {12, 11, 13, 5, 7, 1};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    std::cout<<"Arreglo no ordenado: \n";
-    printarray(n, arr);
-    insertionsort(arr, n);
-    std::cout<<"Arreglo ordenado: \n";
-    printarray(n, arr);
-    return 0;
+    // std::vector<int> vect = {12, 11, 13, 5, 7, 1};
+    // std::cout<<"Arreglo no ordenado: \n";
+    // printarray(vect);
+    // insertionsort(vect);
+    // std::cout<<"Arreglo ordenado: \n";
+    // printarray(vect);
+    // return 0;
+    int a {7};
+    float b {5};
+    std::cout<<a/b;
+
 }
