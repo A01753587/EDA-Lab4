@@ -78,11 +78,37 @@ void Sorting::heapsort(std::vector<int> &vect){
 }
 
 // Quicksort
-void Sorting::quicksort(std::vector<int> &vect){
-    
+void Sorting::quicksort(std::vector<int> &vect, int start, int end){
+    if(start>=end) return;
+    int pivot = vect[end];
+    int sorted = start-1;
+    for(int i=start; i<end;i++){
+        if(vect[i]<pivot){
+            sorted++;
+            std::swap(vect[sorted],vect[i]);
+        }
+    }
+    std::swap(vect[sorted + 1], vect[end]);
+    quicksort(vect,start,sorted-1);
+    quicksort(vect,sorted+1,end);
 }
 
 // Mergesort
+
+// Countingsort
+void Sorting::countingsort(std::vector<int>& vect, int max_value){
+    std::vector<int> count(max_value,0);
+    for(int i=0;i<vect.size();i++){
+        count[vect[i]]++;
+    }
+    vect.clear();
+    for(int j=0;j<max_value;j++){
+        while (count[j]!=0){
+        vect.push_back(j);
+        count[j]--;
+        }
+    }
+}
 
 
 

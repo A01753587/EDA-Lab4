@@ -18,7 +18,10 @@ std::ostream& operator<<(std::ostream& out, std::vector<int> &vect){
 int main(){
     Sorting s;
     std::vector<int> data={10,36,1,5,2,2,15,49,50,4,3};
-    s.heapsort(data);
+    // auto maxRes=std::max_element(data.begin(),data.end());
+    // int max=*maxRes;
+    // s.countingsort(data,max);
+    s.quicksort(data, 0, data.size()-1);
     std::cout<<data;
     return 0;
 }
