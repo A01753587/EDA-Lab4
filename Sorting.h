@@ -14,5 +14,8 @@ public:
     void quicksort(std::vector<int>& vect, int start, int end);
     void mergesot(std::vector<int>& vect);
     void countingsort(std::vector<int>& vect, int max_value);
+    void fill_random(std::vector<int>& vect, int n);
+    void fill_incremental(std::vector<int>& vect, int n);
+    void fill_decremental(std::vector<int>& vect, int n);
 };
 
