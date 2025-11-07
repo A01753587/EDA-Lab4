@@ -41,11 +41,24 @@ void print_vector(const std::vector<T>& vec){
     std::cout<<"\n";
 }
 
+void selection_sort(std::vector<int>& vec){
+    for (int i=0; i<vec.size()-1; i++){ 
+        //find smallest value in vector "vec" starting at i
+        int min_index = i; 
+        for (int j= i+1; j<vec.size(); j++){
+            if (vec.at(j)<vec.at(min_index)){
+                min_index = j;
+            } 
+        }
+        std::swap(vec.at(i), vec.at(min_index));
+    }
+}
+
+
 //Complexity O(n^2)
 
 
-void fill_random(std::vector<int>& values, int max_value)
-{
+void fill_random(std::vector<int>& values, int max_value){
     std::srand(0);
     for (int i = 0; i < values.size(); ++i) {
         values.at(i) = std::rand() % max_value;
@@ -59,7 +72,7 @@ int main(){
     selection_sort(a);
     print_vector(a);
 
-    std::vector<int> b(10000);
+    std::vector<int> b(100);
     fill_random(b, 1000);
     print_vector(b);
     auto start = std::chrono::high_resolution_clock::now();
@@ -71,5 +84,10 @@ int main(){
     double total_time = duration.count() / 1'000'000.0;
     std::cout<<"El tiempo total de ejecucion es de: "<<total_time<<" segundos\n";
     print_vector(b); 
+    if (std::is_sorted(b.begin(), b.end())) {
+        std::cout << "The vector is sorted." << std::endl;
+    } else {
+        std::cout << "The vector is not sorted." << std::endl;
+    }
     
 }

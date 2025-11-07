@@ -19,11 +19,13 @@ se iguala el elemento en el siguiente elemento
 
 
 #include <iostream>
+#include <cstdlib>
 #include "Sorting.h"
 
 // Complexity: O(n^2)
 Sorting::Sorting(){};
 Sorting::~Sorting(){};
+
 // Bubblesort
 void Sorting::bubblesort(std::vector<int>& vect){
     int n = vect.size();
@@ -118,19 +120,6 @@ void Sorting::insertionsort(std::vector<int> &vect){
 
 // Complexity: O(n Log n)
 
-// Heapsort
-void Sorting::heapsort(std::vector<int> &vect){
-    for (int i = 0 ; i < vect.size() ; i++){
-        int index = i;
-        while(index != 0 ){
-            int parent = (index)/2;
-            if(vect[index] >= vect[parent]) break;
-            std::swap(vect[index],vect[parent]);
-            index = parent;
-        }
-    }
-}
-
 // Quicksort
 void Sorting::quicksort(std::vector<int> &vect, int start, int end){
     if(start>=end) return;
@@ -163,6 +152,40 @@ void Sorting::countingsort(std::vector<int>& vect, int max_value){
         }
     }
 }
+
+// Funcion para el llenado aleatorio del vector
+void Sorting::fill_random(std::vector<int>& values, int max_value)
+{
+    std::srand(0);
+    for (int i = 0; i < values.size(); ++i) {
+        values.at(i) = std::rand() % max_value;
+    }
+}
+
+
+// Funcion de llenado del vector ascendentemente
+void Sorting::fill_incremental(std::vector<int>& values, int max_value)
+{
+    double section = max_value / static_cast<double>(values.size());
+    double current = 0.0;
+    for (int i = 0; i < values.size(); ++i) {
+        values.at(i) = static_cast<int>(current);
+        current += section;
+    }
+}
+
+// Funcion de llenado del vector descendetemente
+void Sorting::fill_decremental(std::vector<int>& values, int max_value)
+{
+    double section = max_value / static_cast<double>(values.size());
+    double current = 0.0;
+    for (int i = values.size() - 1; i >= 0; --i) {
+        values.at(i) = static_cast<int>(current);
+        current += section;
+    }
+}
+
+
 
 
 
