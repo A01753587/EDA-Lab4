@@ -98,19 +98,19 @@ int main(){
             fill_vector();
             auto iterator=std::max_element(data.begin(),data.end());
             int max_value= *iterator;
-            auto start = std::chrono::high_resolution_clock::now();
+            auto start_counting = std::chrono::high_resolution_clock::now();
             sort.countingsort(data,max_value);
-            auto stop = std::chrono::high_resolution_clock::now();
-            auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-            double total_time = duration.count() / 1'000'000.0;
+            auto stop_counting = std::chrono::high_resolution_clock::now();
+            auto duration_counting = std::chrono::duration_cast<std::chrono::microseconds>(stop_counting - start_counting);
+            double total_time_counting = duration_counting.count() / 1'000'000.0;
             break;
         case 7:
             fill_vector();
-            auto start = std::chrono::high_resolution_clock::now();
+            auto start_sort = std::chrono::high_resolution_clock::now();
             std::sort(data.begin(),data.end());
-            auto stop = std::chrono::high_resolution_clock::now();
-            auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-            double total_time = duration.count() / 1'000'000.0;
+            auto stop_sort = std::chrono::high_resolution_clock::now();
+            auto duration_sort = std::chrono::duration_cast<std::chrono::microseconds>(stop_sort - start_sort);
+            double total_time_sort = duration_sort.count() / 1'000'000.0;
             break;    
         }
         if (std::is_sorted(data.begin(), data.end())) std::cout << "The vector is sorted.\n";
