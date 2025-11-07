@@ -36,6 +36,60 @@ void Sorting::bubblesort(std::vector<int>& vect){
     }
 }
 
+void merge(std::vector<int>& vect, int start, int mid, int end){
+    //divide de size vector into 2 integers
+    int size1 = mid - start + 1;
+    int size2 = end - mid;
+
+    //create two vectors that togheter will have the same size of the original one 
+    std::vector<int> v1(size1);
+
+    std::vector<int> v2(size2);
+    
+    //fill the two vectors with the original values
+    int cntr = 0;
+    int idx1 = 0;
+    int idx2 = 0;
+    while(cntr != size1+size2){
+        if(cntr < size1){
+            v1[idx1] = vect[start + idx1];
+            cntr++;
+            idx1++;
+        }else{
+            v2[idx2] = vect[start+idx1+idx2];
+            cntr++;
+            idx2++;
+        }
+    }
+    cntr = start;
+    idx1 = 0;
+    idx2 = 0;
+    //sort the two vectors in the original one
+    int i = 0, j = 0, k = start;
+
+    while (i < size1 || j < size2) {
+        if (i < size1 && (j >= size2 || v1[i] <= v2[j])) {
+            vect[k++] = v1[i++];
+        } else {
+            vect[k++] = v2[j++];
+        }
+    }
+}
+
+void Sorting::mergesort(std::vector<int>& vect, int start, int end){
+    //Check the base case where the vector has only one element
+    if(start >= end){
+        return;
+    }
+    //Find the index of the element on the mid 
+    int mid = start + (end - start) / 2;
+    //Recursively find the mid of the sub-vectors
+    mergesort(vect, start, mid);
+    mergesort(vect, mid+1, end);
+    //After having all the index of our sub-vectors we merge them whit a helper funcition
+    merge(vect, start, mid, end);   
+}
+
 // Selection sort
 void Sorting::selectionsort(std::vector<int>& vect){
     for (int i=0; i<vect.size()-1; i++){ 
