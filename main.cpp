@@ -64,41 +64,41 @@ int main(){
             break;
         case 2:
             fill_vector();
-            auto start = std::chrono::high_resolution_clock::now();
+            auto start_insertion = std::chrono::high_resolution_clock::now();
             sort.insertionsort(data);
-            auto stop = std::chrono::high_resolution_clock::now();
-            auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-            double total_time = duration.count() / 1'000'000.0;
+            auto stop_insertion = std::chrono::high_resolution_clock::now();
+            auto duration_insertion = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+            double total_time_insertion = duration_insertion.count() / 1'000'000.0;
             break;
         case 3:
             fill_vector();
-            auto start = std::chrono::high_resolution_clock::now();
+            auto start_bubble = std::chrono::high_resolution_clock::now();
             sort.bubblesort(data);
-            auto stop = std::chrono::high_resolution_clock::now();
-            auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-            double total_time = duration.count() / 1'000'000.0;
+            auto stop_bubble = std::chrono::high_resolution_clock::now();
+            auto duration_bubble = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+            double total_time_bubble = duration_bubble.count() / 1'000'000.0;
             break;
         case 4:
             fill_vector();
-            auto start = std::chrono::high_resolution_clock::now();
+            auto start_quick = std::chrono::high_resolution_clock::now();
             sort.quicksort(data,0,data.size());
-            auto stop = std::chrono::high_resolution_clock::now();
-            auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-            double total_time = duration.count() / 1'000'000.0;
+            auto stop_quick = std::chrono::high_resolution_clock::now();
+            auto duration_quick = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+            double total_time_quick = duration_quick.count() / 1'000'000.0;
             break;
         case 5:
             fill_vector();
-            auto start = std::chrono::high_resolution_clock::now();
+            auto start_merge = std::chrono::high_resolution_clock::now();
             sort.mergesort(data);
-            auto stop = std::chrono::high_resolution_clock::now();
-            auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
-            double total_time = duration.count() / 1'000'000.0;
+            auto stop_merge = std::chrono::high_resolution_clock::now();
+            auto duration_merge = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+            double total_time_merge = duration_merge.count() / 1'000'000.0;
             break;
         case 6:
             fill_vector();
             auto iterator=std::max_element(data.begin(),data.end());
             int max_value= *iterator;
-            auto start = std::chrono::high_resolution_clock::now();
+            auto start_ = std::chrono::high_resolution_clock::now();
             sort.countingsort(data,max_value);
             auto stop = std::chrono::high_resolution_clock::now();
             auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
